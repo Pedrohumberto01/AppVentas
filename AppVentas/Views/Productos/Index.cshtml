@@ -1,0 +1,27 @@
+﻿@model IEnumerable<AppVentas.Models.Producto>
+
+@{
+    ViewData["Title"] = "Productos";
+}
+
+<h2 class="text-center">Catálogo de Productos</h2>
+<div class="container">
+    <div class="row">
+        @foreach (var producto in Model)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@producto.Nombre</h5>
+                        <p class="card-text">@producto.Descripcion</p>
+                        <p class="card-text"><strong>Precio: $@producto.Precio</strong></p>
+                        <form asp-controller="Ventas" asp-action="Comprar" method="post">
+                            <input type="hidden" name="idProducto" value="@producto.ID" />
+                            <button type="submit" class="btn btn-primary">Comprar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

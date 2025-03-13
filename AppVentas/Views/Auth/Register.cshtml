@@ -1,0 +1,28 @@
+﻿@model AppVentas.Models.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2 class="text-center">Registro de Usuario</h2>
+
+<form asp-controller="Auth" asp-action="Register" method="post">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input type="text" class="form-control" asp-for="Nombre" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" asp-for="Email" required>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control" asp-for="Password" required>
+    </div>
+    <button type="submit" class="btn btn-success w-100">Registrarse</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger mt-3">@ViewBag.Error</div>
+}
