@@ -13,10 +13,10 @@ builder.Services.AddDbContext<VentasContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))));
 
-// Configuración de Identity
-builder.Services.AddIdentity<Usuario, IdentityRole>()
-    .AddEntityFrameworkStores<VentasContext>()
-    .AddDefaultTokenProviders();
+//// Configuración de Identity
+//builder.Services.AddIdentity<Usuario, IdentityRole>()
+//    .AddEntityFrameworkStores<VentasContext>()
+//    .AddDefaultTokenProviders();
 
 // Configuración de cookies (opcional)
 builder.Services.ConfigureApplicationCookie(options =>
@@ -45,6 +45,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Auth}/{action=Login}/{id?}");
+    pattern: "{controller=Productos}/{action=Index}/{id?}");
 
 app.Run();
